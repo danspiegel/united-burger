@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="teste" namespace="/Teste" extends="struts-default">
+		<action name="FazerLogin">
+			<result>pages/login.jsp</result>
+		</action>
+		<action name="Login"
+			class="br.com.treinaweb.teste.struts2.login.actions.LoginAction"
+			method="logar">
+			<result name="SUCCESS">pages/sucesso.jsp</result>
+			<result name="ERROR">pages/erro.jsp</result>
+		</action>
+	</package>
+	<package name="albuns" namespace="/Album" extends="tiles-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult"></result-type>
+		</result-types>
+		<action name="ListarAlbuns"
+			class="br.com.treinaweb.teste.struts2.controllers.impl.AlbumController"
+			method="listar">
+			<result name="SUCCESS" type="tiles">album.listar.tiles</result>
+			<result name="ERROR" type="tiles">album.erro.tiles</result>
+		</action>
+		<action name="Inserir">
+			<result type="tiles">album.inserir.tiles</result>
+		</action>
+		<action name="InserirAlbum"
+			class="br.com.treinaweb.teste.struts2.controllers.impl.AlbumController"
+			method="inserir">
+			<result name="SUCCESS" type="redirectAction">/ListarAlbuns</result>
+			<result name="ERROR" type="tiles">album.erro.tiles</result>
+		</action>
+		<action name="Alterar"
+			class="br.com.treinaweb.teste.struts2.controllers.impl.AlbumController"
+			method="prepararAlterar">
+			<result name="SUCCESS" type="tiles">album.alterar.tiles</result>
+			<result name="ERROR" type="tiles">album.erro.tiles</result>
+		</action>
+		<action name="AlterarAlbum"
+			class="br.com.treinaweb.teste.struts2.controllers.impl.AlbumController"
+			method="alterar">
+			<result name="SUCCESS" type="redirectAction">/ListarAlbuns</result>
+			<result name="ERROR" type="tiles">album.erro.tiles</result>
+		</action>
+		<action name="Excluir"
+			class="br.com.treinaweb.teste.struts2.controllers.impl.AlbumController"
+			method="deletar">
+			<result name="SUCCESS" type="redirectAction">/ListarAlbuns</result>
+			<result name="ERROR" type="tiles">album.erro.tiles</result>
+		</action>
+		<action name="Detalhar"
+			class="br.com.treinaweb.teste.struts2.controllers.impl.AlbumController"
+			method="detalhar">
+			<result name="SUCCESS" type="tiles">album.detalhar.tiles</result>
+			<result name="ERROR" type="tiles">album.erro.tiles</result>
+		</action>
+	</package>
+	<package name="musicas" namespace="/Musica" extends="struts-default">
+		<action name="ListarMusicas"
+			class="br.com.treinaweb.teste.struts2.controllers.impl.MusicaController"
+			method="listar">
+			<result name="SUCCESS">pages/listar.jsp</result>
+			<result name="ERROR">pages/erro.jsp</result>
+		</action>
+		<action name="Inserir"
+			class="br.com.treinaweb.teste.struts2.controllers.impl.MusicaController"
+			method="prepararInserir">
+			<result name="SUCCESS">pages/inserir.jsp</result>
+			<result name="ERROR">pages/erro.jsp</result>
+		</action>
+		<action name="InserirMusica"
+			class="br.com.treinaweb.teste.struts2.controllers.impl.MusicaController"
+			method="inserir">
+			<result name="SUCCESS" type="redirectAction">/ListarMusicas</result>
+			<result name="ERROR">pages/erro.jsp</result>
+		</action>
+		<action name="Alterar"
+			class="br.com.treinaweb.teste.struts2.controllers.impl.MusicaController"
+			method="prepararAlterar">
+			<result name="SUCCESS">pages/alterar.jsp</result>
+			<result name="ERROR">pages/erro.jsp</result>
+		</action>
+		<action name="AlterarMusica"
+			class="br.com.treinaweb.teste.struts2.controllers.impl.MusicaController"
+			method="alterar">
+			<result name="SUCCESS" type="redirectAction">/ListarMusicas</result>
+			<result name="ERROR">pages/erro.jsp</result>
+		</action>
+		<action name="Excluir"
+			class="br.com.treinaweb.teste.struts2.controllers.impl.MusicaController"
+			method="deletar">
+			<result name="SUCCESS" type="redirectAction">/ListarMusicas</result>
+			<result name="ERROR">pages/erro.jsp</result>
+		</action>
+		<action name="Detalhar"
+			class="br.com.treinaweb.teste.struts2.controllers.impl.MusicaController"
+			method="detalhar">
+			<result name="SUCCESS">pages/detalhar.jsp</result>
+			<result name="ERROR">pages/erro.jsp</result>
+		</action>
+	</package>
+</struts>
